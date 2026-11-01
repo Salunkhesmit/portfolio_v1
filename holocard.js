@@ -1,5 +1,3 @@
-// Vanilla replacement for the React wrapper around DarkSoulsHoloCard (variant "ashen-one").
-// The 13.2 MB landing-pages/dark-souls-holo-card.html is loaded unchanged in a sandboxed iframe.
 export function mountHoloCard(el, { src = "landing-pages/dark-souls-holo-card.html", title = "Dark Souls holographic card" } = {}) {
   el.classList.add("threeui-background", "dark-souls-holo-card");
   el.setAttribute("role", "group"); el.setAttribute("aria-label", title);
@@ -22,7 +20,7 @@ export function mountHoloCard(el, { src = "landing-pages/dark-souls-holo-card.ht
   const onVis = () => { docVisible = !document.hidden; sync(); };
 
   async function start() {
-    // Integration point: if the asset hasn't been added yet, show a notice instead of a broken frame.
+    // Integration point
     if (location.protocol !== "file:") {
       try { const r = await fetch(src, { method: "HEAD" }); if (!r.ok) throw 0; }
       catch { el.innerHTML = `<div class="holo-note"><p>Holographic card integration point ready.<br>Add <code>${src}</code> (original ThreeUI file, unchanged) to enable it.</p></div>`; return; }
