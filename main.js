@@ -1,3 +1,4 @@
+import "./ui.js";
 import { DigitalRain } from "./rain.js";
 const $ = (s) => document.querySelector(s);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -21,7 +22,7 @@ else {
 const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach((n) => rio.observe(n));
 
-// Lazy: holo card (tap-to-load on small screens / Save-Data)
+// Lazy: holo card
 const holo = $("#holo");
 const gated = matchMedia("(max-width:768px)").matches || navigator.connection?.saveData;
 const loadHolo = async () => (await import("./holocard.js")).mountHoloCard(holo);
@@ -30,10 +31,6 @@ if (gated) {
   holo.querySelector("button").addEventListener("click", () => { holo.innerHTML = ""; loadHolo(); }, { once: true });
 } else new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); loadHolo(); } }, { rootMargin: "400px" }).observe(holo);
 
-// Lazy: footer scene
-const con = $("#console");
-new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); import("./footer.js").then((m) => m.initFooter(con, reduce)).catch((e) => console.warn("Footer 3D unavailable", e)); } }, { rootMargin: "300px" }).observe(con);
-
-// Mascot integration point: set data-model="path/to/model.glb" on #mascot to load a GLB (layout unchanged).
+// Mascot integration point
 const mascot = $("#mascot");
 if (mascot.dataset.model) import("./mascot.js").then((m) => m.mountMascot(mascot, mascot.dataset.model, reduce));
