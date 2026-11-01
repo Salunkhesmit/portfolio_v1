@@ -1,8 +1,7 @@
-// Vanilla port of Originkit "ASCII Rain" (DigitalRain). Engine logic unchanged from the supplied TSX;
-// only the React refs/effect are replaced by init + a returned destroy().
+// Vanilla port of Originkit "ASCII Rain" (DigitalRain).
 const DEFAULTS = { headColor:"#FFFFFF", trailColor:"#3FFF00", glyphSize:8, speed:16, angle:0, density:40, trail:28,
-  glyphs:"ｱｲｳｴｵｶｷｸ0123456789ABCDEFｸｿﾝ", shuffle:true, shuffleGlyphs:"0123456789ABCDEF" };
-// Tuning constants copied from the supplied TSX.
+  glyphs:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", shuffle:true, shuffleGlyphs:"0123456789ABCDEF" };
+
 const CROSSING_SHARE = 0.35, MIN_BURNOUT = 0.75, MIN_RELEASE = 0.3, MAX_RELEASE = 0.8;
 
 export function DigitalRain(wrap, props = {}) {
