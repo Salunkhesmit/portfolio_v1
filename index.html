@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Smit Salunkhe — Portfolio</title>
+<meta name="description" content="Smit Salunkhe — Computer Engineering diploma student focused on frontend development.">
+<meta name="theme-color" content="#050404">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+</head>
+<body class="locked" id="top">
+
+<!-- 1. INTRO: DigitalRain (vanilla port) -->
+<div id="intro" aria-label="Intro animation">
+  <div id="rain"></div>
+  <p class="intro-tag">Loading<span class="cursor">_</span></p>
+  <button id="skip" type="button">Skip</button>
+</div>
+
+<nav class="navbar navbar-expand-md fixed-top site-nav">
+  <div class="container">
+    <a class="navbar-brand" href="#top">Smit Salunkhe</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#credentials">Credentials</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- 2. HERO -->
+<section id="hero" class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 reveal">
+        <p class="eyebrow">Computer Engineering Student</p>
+        <h1 class="display-name">Smit Salunkhe</h1>
+        <p class="lead-line">Frontend first. Learning to build interfaces that feel engineered, not templated.</p>
+        <p class="sub">Exploring broader software development and AI along the way.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a class="btn btn-ember" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="col-lg-5 reveal">
+        <!-- Mascot slot: replace with GLB later via data-model="assets/models/mascot.glb" (no layout change needed) -->
+        <div class="mascot-slot" id="mascot" data-model="" role="img" aria-label="Mascot placeholder: 3D model pending">
+          <i></i><i></i><i></i><i></i>
+          <span>MASCOT SLOT<br><small>GLB pending · 4:5</small></span>
+        </div>
+      </div>
+    </div>
+    <!-- Supplied ThreeUI card (iframe mounted by js/holocard.js) -->
+    <div class="holo-wrap reveal">
+      <div id="holo" class="holo-host"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ABOUT -->
+<section id="about" class="block">
+  <div class="container reveal">
+    <h2 class="sec-title"><span>01</span> About</h2>
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <p>I'm a Computer Engineering diploma student working mainly in frontend development: HTML, CSS, JavaScript and Bootstrap, with Three.js for 3D experiments.</p>
+        <p>I learn by building: small projects, then harder ones. I'm still learning several of the tools listed here, and I've marked them honestly.</p>
+        <p class="placeholder">[Add: your story, interests and what you're aiming for next.]</p>
+      </div>
+      <div class="col-lg-5">
+        <ul class="facts">
+          <li><b>Focus</b> Frontend development</li>
+          <li><b>Exploring</b> Software development &amp; AI</li>
+          <li><b>Study</b> Computer Engineering (Diploma)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SKILLS (levels are provisional: edit data-level: core / practising / learning) -->
+<section id="skills" class="block">
+  <div class="container reveal">
+    <h2 class="sec-title"><span>02</span> Technical Skills</h2>
+    <p class="legend"><i class="lv core"></i>Core <i class="lv practising"></i>Practising <i class="lv learning"></i>Learning</p>
+    <div class="row g-4" id="skill-grid">
+      <div class="col-md-6 col-lg-4"><h3>Frontend</h3><ul>
+        <li data-level="core">HTML5</li><li data-level="core">CSS3</li><li data-level="core">JavaScript</li><li data-level="core">Bootstrap</li></ul></div>
+      <div class="col-md-6 col-lg-4"><h3>Languages</h3><ul>
+        <li data-level="practising">Python</li><li data-level="practising">C</li><li data-level="practising">C++</li><li data-level="practising">Java</li></ul></div>
+      <div class="col-md-6 col-lg-4"><h3>Libraries &amp; 3D</h3><ul>
+        <li data-level="practising">Three.js</li><li data-level="practising">Anime.js</li><li data-level="practising">iro.js</li></ul></div>
+      <div class="col-md-6 col-lg-4"><h3>Databases</h3><ul>
+        <li data-level="practising">MySQL</li><li data-level="learning">Oracle DB</li></ul></div>
+      <div class="col-md-6 col-lg-4"><h3>Data Analytics</h3><ul>
+        <li data-level="learning">NumPy</li><li data-level="learning">Pandas</li><li data-level="learning">Matplotlib</li></ul></div>
+      <div class="col-md-6 col-lg-4"><h3>Design &amp; Tools</h3><ul>
+        <li data-level="practising">Figma</li><li data-level="practising">Canva</li><li data-level="core">Git</li><li data-level="core">GitHub</li><li data-level="core">Netlify</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CERTIFICATIONS & ACHIEVEMENTS -->
+<section id="credentials" class="block">
+  <div class="container reveal">
+    <h2 class="sec-title"><span>03</span> Certifications &amp; Achievements</h2>
+    <div class="row g-4">
+      <div class="col-md-6"><div class="card-x placeholder-card"><h3>Certifications</h3><p class="placeholder">[Add verified certificates: title, issuer, year, credential link.]</p></div></div>
+      <div class="col-md-6"><div class="card-x placeholder-card"><h3>Achievements</h3><p class="placeholder">[Add verified achievements.]</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PROJECTS -->
+<section id="projects" class="block">
+  <div class="container reveal">
+    <h2 class="sec-title"><span>04</span> Projects &amp; Work</h2>
+    <div class="row g-4">
+      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
+        <h3>CraveRush</h3><p>Dessert and ice-cream discovery website.</p>
+        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
+        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
+      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
+        <h3>ColorForge</h3><p>Interactive gradient generator built as a JavaScript practice project, with 3D experimentation.</p>
+        <p class="tech">Tech: JavaScript · iro.js · Anime.js · Three.js</p>
+        <p class="links"><span class="ph-link">Repo</span><a href="https://salunkhesmit.github.io/colorforge/" target="_blank" rel="noopener">Live ↗</a></p></div></article>
+      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
+        <h3>My AI Knowledge Universe</h3><p>Personal directory of AI tools, websites and development resources (AI Tools Directory).</p>
+        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
+        <p class="links"><span class="ph-link">Repo</span><a href="https://salunkhesmit.github.io/ai_tools_directory/" target="_blank" rel="noopener">Live ↗</a></p></div></article>
+      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
+        <h3>NGO Website</h3><p>Responsive NGO website project.</p>
+        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
+        <p class="links"><span class="ph-link">Repo</span><a href="https://ngowebdemo.netlify.app/" target="_blank" rel="noopener">Live ↗</a></p></div></article>
+      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
+        <h3>AnyFit Website</h3><p>Responsive fitness website.</p>
+        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
+        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
+      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
+        <h3>Café UI Demo</h3><p>Responsive café interface.</p>
+        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
+        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
+      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
+        <h3>Attendance Dashboard</h3><p>Student attendance and semester analytics prototype.</p>
+        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
+        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
+    </div>
+    <p class="note">Grey items are placeholders until verified links are added. See <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">GitHub</a> for repositories.</p>
+  </div>
+</section>
+
+<!-- 7. CONTACT -->
+<section id="contact" class="block">
+  <div class="container reveal">
+    <h2 class="sec-title"><span>05</span> Contact</h2>
+    <p>Open to freelance work and collaboration.</p>
+    <ul class="contact-list">
+      <li><b>GitHub</b> <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">github.com/Salunkhesmit</a></li>
+      <li><b>Email</b> <span class="ph-link">[add email]</span></li>
+      <li><b>LinkedIn</b> <span class="ph-link">[add link]</span></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<!-- 8. INTERACTIVE FOOTER -->
+<footer class="site-footer">
+  <div id="console" class="console" aria-label="Interactive footer console">
+    <div class="status"><span class="led"></span>Available For Freelance</div>
+  </div>
+  <p class="credit">Designed &amp; Developed by Smit Salunkhe</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
