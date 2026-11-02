@@ -1,4 +1,3 @@
-// Vanilla port of Originkit "ASCII Rain" (DigitalRain).
 const DEFAULTS = { headColor:"#FFFFFF", trailColor:"#3FFF00", glyphSize:8, speed:16, angle:0, density:40, trail:28,
   glyphs:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", shuffle:true, shuffleGlyphs:"0123456789ABCDEF" };
 
