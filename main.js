@@ -24,7 +24,3 @@ else {
 // Scroll reveal
 const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach((n) => rio.observe(n));
-
-// Mascot integration point: set data-model="path/to/model.glb" on #mascot to load a GLB (layout unchanged).
-const mascot = $("#mascot");
-if (mascot.dataset.model) import("./mascot.js").then((m) => m.mountMascot(mascot, mascot.dataset.model, reduce));
