@@ -11,215 +11,391 @@
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
 </head>
 <body class="locked" id="top">
-
-<!-- 1. INTRO: DigitalRain (vanilla port) -->
-<div id="intro" aria-label="Intro animation">
-  <div id="rain"></div>
-  <div class="boot" role="status">
-    <p>&gt; initialising portfolio</p>
-    <p>&gt; loading interface ... ok</p>
-    <p>&gt; starting<span class="cursor">_</span></p>
-    <div class="bar"><i></i></div>
-    <button id="skip" type="button">Skip</button>
-  </div>
-</div>
-
-<nav class="navbar navbar-expand-md fixed-top site-nav">
-  <div class="container">
-    <a class="navbar-brand" href="#top">Smit Salunkhe</a>
-    <button class="pal-open pal-btn ms-auto me-2 d-md-none" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#credentials">Credentials</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        <li class="nav-item ms-md-2"><button class="pal-open pal-btn" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button></li>
-      </ul>
+  <!-- 1. INTRO: DigitalRain (vanilla port) -->
+  <div id="intro" aria-label="Intro animation">
+    <div id="rain"></div>
+    <div class="boot" role="status">
+      <p>&gt; initialising portfolio</p>
+      <p>&gt; loading interface ... ok</p>
+      <p>&gt; starting<span class="cursor">_</span></p>
+      <div class="bar"><i></i></div>
+      <button id="skip" type="button">Skip</button>
     </div>
   </div>
-</nav>
 
-<main>
-<!-- 2. HERO -->
-<section id="hero" class="hero">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-7 reveal">
-        <p class="eyebrow">Computer Engineering Student</p>
-        <h1 class="display-name">Smit Salunkhe</h1>
-        <p class="lead-line">Frontend first. Learning to build interfaces that feel engineered, not templated.</p>
-        <p class="sub">Exploring broader software development and AI along the way.</p>
-        <div class="d-flex flex-wrap gap-3 mt-4">
-          <a class="btn btn-ember" href="#projects">View projects</a>
-          <a class="btn btn-ghost" href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-      <div class="col-lg-5 reveal">
-        <div class="sys-panel">
-          <div class="sys-head"><span><span class="led"></span> SYSTEM ONLINE</span><span>PORTFOLIO</span></div>
-          <dl>
-            <div><dt>FOCUS</dt><dd>Frontend development</dd></div>
-            <div><dt>EXPLORING</dt><dd>Software development &amp; AI</dd></div>
-            <div><dt>STUDY</dt><dd>Computer Engineering (Diploma)</dd></div>
-          </dl>
-        </div>
-      </div>
-      <div hidden aria-hidden="true" data-future="mascot">
-        <!-- Mascot slot: replace with GLB later via data-model="assets/models/mascot.glb" (no layout change needed) -->
-        <div class="mascot-slot" id="mascot" data-model="" role="img" aria-label="Mascot placeholder: 3D model pending">
-          <i></i><i></i><i></i><i></i>
-          <span>MASCOT SLOT<br><small>GLB pending · 4:5</small></span>
-        </div>
-      </div>
-    </div>
-    <!-- Supplied ThreeUI card (iframe mounted by js/holocard.js) -->
-    <div class="holo-wrap reveal">
-      <div id="holo" class="holo-host"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. ABOUT -->
-<section id="about" class="block">
-  <div class="container reveal">
-    <h2 class="sec-title"><span>01</span> About</h2>
-    <div class="row g-4">
-      <div class="col-lg-7">
-        <p>I'm a Computer Engineering diploma student working mainly in frontend development: HTML, CSS, JavaScript and Bootstrap, with Three.js for 3D experiments.</p>
-        <p>I learn by building: small projects, then harder ones. I'm still learning several of the tools listed here, and I've marked them honestly.</p>
-        <p class="placeholder">[Add: your story, interests and what you're aiming for next.]</p>
-      </div>
-      <div class="col-lg-5">
-        <ul class="facts">
-          <li><b>Focus</b> Frontend development</li>
-          <li><b>Exploring</b> Software development &amp; AI</li>
-          <li><b>Study</b> Computer Engineering (Diploma)</li>
+  <nav class="navbar navbar-expand-md fixed-top site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="#top">Smit Salunkhe</a>
+      <button class="pal-open pal-btn ms-auto me-2 d-md-none" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#credentials">Credentials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#terminal">Terminal</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-md-2"><button class="pal-open pal-btn" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button></li>
         </ul>
       </div>
     </div>
-    <ol class="timeline" aria-label="Developer journey">
-      <li><time>[dates]</time><h4>Computer Engineering Diploma</h4><p>Education. Add institution details.</p></li>
-      <li><time>[dates]</time><h4>Frontend foundations</h4><p>HTML5, CSS3, JavaScript and Bootstrap.</p></li>
-      <li><time>[dates]</time><h4>Project development</h4><p>Practice projects such as ColorForge and the AI Tools Directory.</p></li>
-      <li><time>[dates]</time><h4>Internship</h4><p class="placeholder">[Add internship experience, if any.]</p></li>
-      <li><time>[dates]</time><h4>Achievements</h4><p class="placeholder">[Add verified milestones.]</p></li>
-    </ol>
-  </div>
-</section>
+  </nav>
 
-<!-- 4. SKILLS (levels are provisional: edit data-level: core / practising / learning) -->
-<section id="skills" class="block">
-  <div class="container reveal">
-    <h2 class="sec-title"><span>02</span> Technical Skills</h2>
-    <p class="legend"><i class="lv core"></i>Core <i class="lv practising"></i>Practising <i class="lv learning"></i>Learning</p>
-    <div class="row g-4" id="skill-grid">
-      <div class="col-md-6 col-lg-4"><h3>Frontend</h3><ul>
-        <li data-level="core">HTML5</li><li data-level="core">CSS3</li><li data-level="core">JavaScript</li><li data-level="core">Bootstrap</li></ul></div>
-      <div class="col-md-6 col-lg-4"><h3>Languages</h3><ul>
-        <li data-level="practising">Python</li><li data-level="practising">C</li><li data-level="practising">C++</li><li data-level="practising">Java</li></ul></div>
-      <div class="col-md-6 col-lg-4"><h3>Libraries &amp; 3D</h3><ul>
-        <li data-level="practising">Three.js</li><li data-level="practising">Anime.js</li><li data-level="practising">iro.js</li></ul></div>
-      <div class="col-md-6 col-lg-4"><h3>Databases</h3><ul>
-        <li data-level="practising">MySQL</li><li data-level="learning">Oracle DB</li></ul></div>
-      <div class="col-md-6 col-lg-4"><h3>Data Analytics</h3><ul>
-        <li data-level="learning">NumPy</li><li data-level="learning">Pandas</li><li data-level="learning">Matplotlib</li></ul></div>
-      <div class="col-md-6 col-lg-4"><h3>Design &amp; Tools</h3><ul>
-        <li data-level="practising">Figma</li><li data-level="practising">Canva</li><li data-level="core">Git</li><li data-level="core">GitHub</li><li data-level="core">Netlify</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<!-- 5. CERTIFICATIONS & ACHIEVEMENTS -->
-<section id="credentials" class="block">
-  <div class="container reveal">
-    <h2 class="sec-title"><span>03</span> Certifications &amp; Achievements</h2>
-    <div class="row g-4">
-      <div class="col-md-6"><div class="card-x placeholder-card"><h3>Certifications</h3><p class="placeholder">[Add verified certificates: title, issuer, year, credential link.]</p></div></div>
-      <div class="col-md-6"><div class="card-x placeholder-card"><h3>Achievements</h3><p class="placeholder">[Add verified achievements.]</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 6. PROJECTS -->
-<section id="projects" class="block">
-  <div class="container reveal">
-    <h2 class="sec-title"><span>04</span> Projects &amp; Work</h2>
-    <div class="row g-4">
-      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
-        <h3>CraveRush</h3><p>Dessert and ice-cream discovery website.</p>
-        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
-        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
-      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
-        <h3>ColorForge</h3><p>Interactive gradient generator built as a JavaScript practice project, with 3D experimentation.</p>
-        <p class="tech">Tech: JavaScript · iro.js · Anime.js · Three.js</p>
-        <p class="links"><span class="ph-link">Repo</span><a href="https://salunkhesmit.github.io/colorforge/" target="_blank" rel="noopener">Live ↗</a></p></div></article>
-      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
-        <h3>My AI Knowledge Universe</h3><p>Personal directory of AI tools, websites and development resources (AI Tools Directory).</p>
-        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
-        <p class="links"><span class="ph-link">Repo</span><a href="https://salunkhesmit.github.io/ai_tools_directory/" target="_blank" rel="noopener">Live ↗</a></p></div></article>
-      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
-        <h3>NGO Website</h3><p>Responsive NGO website project.</p>
-        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
-        <p class="links"><span class="ph-link">Repo</span><a href="https://ngowebdemo.netlify.app/" target="_blank" rel="noopener">Live ↗</a></p></div></article>
-      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
-        <h3>AnyFit Website</h3><p>Responsive fitness website.</p>
-        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
-        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
-      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
-        <h3>Café UI Demo</h3><p>Responsive café interface.</p>
-        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
-        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
-      <article class="col-md-6 col-lg-4"><div class="card-x"><div class="thumb">Preview pending</div>
-        <h3>Attendance Dashboard</h3><p>Student attendance and semester analytics prototype.</p>
-        <p class="tech">Tech: <span class="placeholder">[add]</span></p>
-        <p class="links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p></div></article>
-    </div>
-    <p class="note">Grey items are placeholders until verified links are added. See <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">GitHub</a> for repositories.</p>
-  </div>
-</section>
-
-<!-- 7. CONTACT -->
-<section id="contact" class="block">
-  <div class="container reveal">
-    <h2 class="sec-title"><span>05</span> Contact</h2>
-    <p>Open to freelance work and collaboration.</p>
-    <ul class="contact-list">
-      <li><b>GitHub</b> <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">github.com/Salunkhesmit</a></li>
-      <li><b>Email</b> <span class="ph-link">[add email]</span></li>
-      <li><b>LinkedIn</b> <span class="ph-link">[add link]</span></li>
-    </ul>
-  </div>
-</section>
-</main>
-
-<!-- 8. INTERACTIVE FOOTER -->
-<footer class="site-footer" id="footer">
-  <div class="container reveal">
-    <div class="sf-grid">
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>session: close</span></div>
-        <div class="term-body">
-          <p>&gt; visitor session active</p>
-          <p>&gt; all sections loaded</p>
-          <p>&gt; closing session, thanks for visiting<span class="cursor">_</span></p>
-          <p class="sf-status"><span class="led"></span>Available For Freelance</p>
+  <main>
+  <!-- 2. HERO -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 reveal">
+          <p class="eyebrow">Computer Engineering Student</p>
+          <h1 class="display-name">Smit Salunkhe</h1>
+          <p class="lead-line">Frontend first. Learning to build interfaces that feel engineered, not templated.</p>
+          <p class="sub">Exploring broader software development and AI along the way.</p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a class="btn btn-ember" href="#projects">View projects</a>
+            <a class="btn btn-ghost" href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
-        <nav class="keys" aria-label="Footer links">
-          <a class="key w2" href="#top">HOME</a><a class="key gh" href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">G3</a><span class="key off" aria-disabled="true">IG</span>
-          <span class="key off" aria-disabled="true">@</span><a class="key w2 hire" href="#contact">HIRE ME</a><span class="key off" aria-disabled="true">X</span>
-          <span class="key w2 off" aria-disabled="true">CALL ME</span><span class="key off" aria-disabled="true">DB</span><span class="key off" aria-disabled="true">BH</span>
-        </nav>
+        <div class="col-lg-5 reveal">
+          <div class="sys-panel">
+            <div class="sys-head"><span><span class="led"></span> SYSTEM ONLINE</span><span>PORTFOLIO</span></div>
+            <dl>
+              <div><dt>FOCUS</dt><dd>Frontend development</dd></div>
+              <div><dt>EXPLORING</dt><dd>Software development &amp; AI</dd></div>
+              <div><dt>STUDY</dt><dd>Computer Engineering (Diploma)</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div hidden aria-hidden="true" data-future="mascot">
+          <!-- Mascot slot: replace with GLB later via data-model="assets/models/mascot.glb" (no layout change needed) -->
+          <div class="mascot-slot" id="mascot" data-model="" role="img" aria-label="Mascot placeholder: 3D model pending">
+            <i></i><i></i><i></i><i></i>
+            <span>MASCOT SLOT<br><small>GLB pending · 4:5</small></span>
+          </div>
+        </div>
       </div>
-      <div class="crt" aria-hidden="true"><i class="sweep"></i><i class="blip"></i></div>
     </div>
-    <p class="credit">Designed &amp; Developed by Smit Salunkhe</p>
-  </div>
-</footer>
+  </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script type="module" src="main.js"></script>
+  <!-- 3. ABOUT -->
+  <section id="about" class="block">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>01</span> About</h2>
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <p>I'm a Computer Engineering diploma student working mainly in frontend development: HTML, CSS, JavaScript and Bootstrap, with Three.js for 3D experiments.</p>
+          <p>I learn by building: small projects, then harder ones. I'm still learning several of the tools listed here, and I've marked them honestly.</p>
+          <p class="placeholder">[Add: your story, interests and what you're aiming for next.]</p>
+        </div>
+        <div class="col-lg-5">
+          <ul class="facts">
+            <li><b>Focus</b> Frontend development</li>
+            <li><b>Exploring</b> Software development &amp; AI</li>
+            <li><b>Study</b> Computer Engineering (Diploma)</li>
+          </ul>
+        </div>
+      </div>
+      <ol class="timeline" aria-label="Developer journey">
+        <li><time>[dates]</time><h4>Computer Engineering Diploma</h4><p>Education. Add institution details.</p></li>
+        <li><time>[dates]</time><h4>Frontend foundations</h4><p>HTML5, CSS3, JavaScript and Bootstrap.</p></li>
+        <li><time>[dates]</time><h4>Project development</h4><p>Practice projects such as ColorForge and the AI Tools Directory.</p></li>
+        <li><time>[dates]</time><h4>Internship</h4><p class="placeholder">[Add internship experience, if any.]</p></li>
+        <li><time>[dates]</time><h4>Achievements</h4><p class="placeholder">[Add verified milestones.]</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4. SKILLS -->
+  <section id="skills" class="block">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>02</span> Technical Skills</h2>
+      <div class="sk-tabs" role="group" aria-label="Filter by category"><button type="button" data-cat="all" aria-pressed="true">All</button><button type="button" data-cat="frontend" aria-pressed="false">Frontend</button><button type="button" data-cat="backend" aria-pressed="false">Backend</button><button type="button" data-cat="languages" aria-pressed="false">Programming</button><button type="button" data-cat="databases" aria-pressed="false">Database</button><button type="button" data-cat="ai" aria-pressed="false">AI &amp; ML</button><button type="button" data-cat="tools" aria-pressed="false">Tools</button></div>
+      <div id="skill-grid" class="sk-cloud">
+        <div class="sk" data-cat="frontend"><h3>Frontend Development</h3><ul>
+          <li class="logo" tabindex="0" data-icon="H5" data-tip="HTML5&#10;Markup language that structures web pages."><img src="https://cdn.simpleicons.org/html5/E34F26" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">HTML5</li>
+          <li class="logo" tabindex="0" data-icon="C3" data-tip="CSS3&#10;Styling language for layout, colour and motion."><img src="https://cdn.simpleicons.org/css3/33A9DC" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">CSS3</li>
+          <li class="logo" tabindex="0" data-icon="JS" data-tip="JavaScript&#10;Language that makes web pages interactive."><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">JavaScript</li>
+          <li class="logo" tabindex="0" data-icon="B" data-tip="Bootstrap&#10;CSS framework for responsive layouts."><img src="https://cdn.simpleicons.org/bootstrap/A07CE0" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Bootstrap</li>
+          <li class="logo" tabindex="0" data-icon="3D" data-tip="Three.js&#10;JavaScript library for 3D graphics in the browser."><img src="https://cdn.simpleicons.org/threedotjs/FFFFFF" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Three.js</li>
+          <li tabindex="0" data-icon="An" data-tip="Anime.js&#10;Lightweight JavaScript animation library.">Anime.js</li>
+          <li tabindex="0" data-icon="iro" data-tip="iro.js&#10;Colour picker library for JavaScript.">iro.js</li>
+        </ul></div>
+        <div class="sk" data-cat="backend"><h3>Backend Development</h3><ul><li class="placeholder" data-icon="+" data-tip="Add backend technologies">[Add backend technologies]</li></ul></div>
+        <div class="sk" data-cat="languages"><h3>Programming Languages</h3><ul>
+          <li class="logo" tabindex="0" data-icon="Py" data-tip="Python&#10;General-purpose programming language."><img src="https://cdn.simpleicons.org/python/5A9FD4" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Python</li>
+          <li class="logo" tabindex="0" data-icon="C" data-tip="C&#10;Low-level, general-purpose programming language."><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">C</li>
+          <li class="logo" tabindex="0" data-icon="C++" data-tip="C++&#10;C extended with object-oriented features."><img src="https://cdn.simpleicons.org/cplusplus/659AD2" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">C++</li>
+          <li class="logo" tabindex="0" data-icon="Ja" data-tip="Java&#10;Object-oriented, general-purpose language."><img src="https://cdn.simpleicons.org/openjdk/ED8B00" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Java</li>
+        </ul></div>
+        <div class="sk" data-cat="databases"><h3>Database Management</h3><ul>
+          <li class="logo" tabindex="0" data-icon="My" data-tip="MySQL&#10;Open-source relational database."><img src="https://cdn.simpleicons.org/mysql/5D9CC4" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">MySQL</li>
+          <li class="logo" tabindex="0" data-icon="Or" data-tip="Oracle DB&#10;Enterprise relational database system."><img src="https://cdn.simpleicons.org/oracle/F80000" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Oracle DB</li>
+        </ul></div>
+        <div class="sk" data-cat="ai"><h3>AI &amp; Machine Learning</h3><ul>
+          <li class="logo" tabindex="0" data-icon="Np" data-tip="NumPy&#10;Numerical computing library for Python."><img src="https://cdn.simpleicons.org/numpy/4DABCF" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">NumPy</li>
+          <li class="logo" tabindex="0" data-icon="Pd" data-tip="Pandas&#10;Data analysis library for Python."><img src="https://cdn.simpleicons.org/pandas/FFFFFF" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Pandas</li>
+          <li class="logo" tabindex="0" data-icon="Mp" data-tip="Matplotlib&#10;Plotting library for Python."><img src="https://cdn.simpleicons.org/matplotlib/5DA9DD" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Matplotlib</li>
+        </ul></div>
+        <div class="sk" data-cat="tools"><h3>Tools &amp; Platforms</h3><ul>
+          <li class="logo" tabindex="0" data-icon="Gi" data-tip="Git&#10;Version control system."><img src="https://cdn.simpleicons.org/git/F05032" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Git</li>
+          <li class="logo" tabindex="0" data-icon="GH" data-tip="GitHub&#10;Platform for hosting and collaborating on Git repositories."><img src="https://cdn.simpleicons.org/github/FFFFFF" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">GitHub</li>
+          <li class="logo" tabindex="0" data-icon="Nl" data-tip="Netlify&#10;Platform for deploying static websites."><img src="https://cdn.simpleicons.org/netlify/00C7B7" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Netlify</li>
+          <li class="logo" tabindex="0" data-icon="Fg" data-tip="Figma&#10;Collaborative interface design tool."><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Figma</li>
+          <li class="logo" tabindex="0" data-icon="Cv" data-tip="Canva&#10;Online graphic design tool."><img src="https://cdn.simpleicons.org/canva/00C4CC" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Canva</li>
+        </ul></div>
+      </div>
+      <p class="sk-hint">Hover or tap an icon for details.</p>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="credentials" class="block">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>03</span> Certifications</h2>
+      <p class="sec-lead">Hover a card to see its name. Click it for details.</p>
+      <div class="depth-wrap" data-autoplay="5000">
+        <button type="button" class="dc-btn dc-prev" aria-label="Previous certificate">‹</button>
+        <div class="depth" tabindex="0" aria-roledescription="carousel" aria-label="Certifications">
+          <article class="cert" data-title="Certificate Title 01" data-sub="[Issuer] · [Date]" data-info="[Short description: what the course covered and what you learned.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View certificate"><div class="cert-img"><img src="https://picsum.photos/seed/cert-1/800/600" alt="Certificate preview" loading="lazy" draggable="false"><span class="cert-name">Certificate Title 01</span></div></article>
+          <article class="cert" data-title="Certificate Title 02" data-sub="[Issuer] · [Date]" data-info="[Short description of this certificate.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View certificate"><div class="cert-img"><img src="https://picsum.photos/seed/cert-2/800/600" alt="Certificate preview" loading="lazy" draggable="false"><span class="cert-name">Certificate Title 02</span></div></article>
+          <article class="cert" data-title="Certificate Title 03" data-sub="[Issuer] · [Date]" data-info="[Short description of this certificate.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View certificate"><div class="cert-img"><img src="https://picsum.photos/seed/cert-3/800/600" alt="Certificate preview" loading="lazy" draggable="false"><span class="cert-name">Certificate Title 03</span></div></article>
+          <article class="cert" data-title="Certificate Title 04" data-sub="[Issuer] · [Date]" data-info="[Short description of this certificate.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View certificate"><div class="cert-img"><img src="https://picsum.photos/seed/cert-4/800/600" alt="Certificate preview" loading="lazy" draggable="false"><span class="cert-name">Certificate Title 04</span></div></article>
+        </div>
+        <button type="button" class="dc-btn dc-next" aria-label="Next certificate">›</button>
+      </div>
+      <p class="dc-count"></p>
+    </div>
+  </section>
+
+  <!-- INTERNSHIPS -->
+  <section id="internships" class="block">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>03.1</span> Internships</h2>
+      <p class="sec-lead">Hover a card to see its name. Click it for details.</p>
+      <div class="depth-wrap" data-autoplay="5000">
+        <button type="button" class="dc-btn dc-prev" aria-label="Previous internship">‹</button>
+        <div class="depth" tabindex="0" aria-roledescription="carousel" aria-label="Internships">
+          <article class="cert" data-title="Internship 01 · [Role]" data-sub="[Company] · [Duration]" data-info="[Short description: responsibilities, tools used and outcomes.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View letter"><div class="cert-img"><img src="https://picsum.photos/seed/intern-1/800/600" alt="Internship preview" loading="lazy" draggable="false"><span class="cert-name">Internship 01 · [Role]</span></div></article>
+          <article class="cert" data-title="Internship 02 · [Role]" data-sub="[Company] · [Duration]" data-info="[Short description of this internship.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View letter"><div class="cert-img"><img src="https://picsum.photos/seed/intern-2/800/600" alt="Internship preview" loading="lazy" draggable="false"><span class="cert-name">Internship 02 · [Role]</span></div></article>
+          <article class="cert" data-title="Internship 03 · [Role]" data-sub="[Company] · [Duration]" data-info="[Short description of this internship.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View letter"><div class="cert-img"><img src="https://picsum.photos/seed/intern-3/800/600" alt="Internship preview" loading="lazy" draggable="false"><span class="cert-name">Internship 03 · [Role]</span></div></article>
+          <article class="cert" data-title="Internship 04 · [Role]" data-sub="[Company] · [Duration]" data-info="[Short description of this internship.]" data-link="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" data-cta="View letter"><div class="cert-img"><img src="https://picsum.photos/seed/intern-4/800/600" alt="Internship preview" loading="lazy" draggable="false"><span class="cert-name">Internship 04 · [Role]</span></div></article>
+        </div>
+        <button type="button" class="dc-btn dc-next" aria-label="Next internship">›</button>
+      </div>
+      <p class="dc-count"></p>
+    </div>
+  </section>
+
+  <!-- 6. PROJECTS -->
+  <section id="projects" class="block">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>04</span> Projects &amp; Work</h2>
+      <p class="sec-lead">Selected projects. Choose one to see its details.</p>
+      <div class="proj-wrap">
+        <div id="proj-tabs" role="tablist" aria-label="Projects" aria-orientation="vertical">
+          <button type="button" role="tab" id="tab-0" aria-controls="proj-0" aria-selected="false"><span>01</span>CraveRush</button>
+          <button type="button" role="tab" id="tab-1" aria-controls="proj-1" aria-selected="false"><span>02</span>ColorForge</button>
+          <button type="button" role="tab" id="tab-2" aria-controls="proj-2" aria-selected="false"><span>03</span>My AI Knowledge Universe</button>
+          <button type="button" role="tab" id="tab-3" aria-controls="proj-3" aria-selected="false"><span>04</span>NGO Website</button>
+          <button type="button" role="tab" id="tab-4" aria-controls="proj-4" aria-selected="false"><span>05</span>AnyFit Website</button>
+          <button type="button" role="tab" id="tab-5" aria-controls="proj-5" aria-selected="false"><span>06</span>Café UI Demo</button>
+          <button type="button" role="tab" id="tab-6" aria-controls="proj-6" aria-selected="false"><span>07</span>Attendance Dashboard</button>
+          </div>
+        <div class="proj-stage">
+          <p class="proj-top"><span>PROJECT</span><span id="proj-count"></span></p>
+          <article class="proj" id="proj-0" role="tabpanel" aria-labelledby="tab-0" hidden>
+            <div class="proj-body">
+              <div class="proj-info">
+                <h3>CraveRush</h3>
+                <p class="proj-desc">Dessert and ice-cream discovery website.</p>
+                <p class="proj-k">KEY FEATURES</p>
+                <ul class="proj-feat"><li class="placeholder">[Add key features]</li></ul>
+                <p class="proj-links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p>
+              </div>
+              <div class="proj-side">
+                <div class="thumb"><img src="https://picsum.photos/seed/craverush/800/450" alt="CraveRush preview" loading="lazy"></div>
+                <p class="proj-k">STACK</p>
+                <ul class="proj-stack"><li class="placeholder">[Add technologies]</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="proj-1" role="tabpanel" aria-labelledby="tab-1" hidden>
+            <div class="proj-body">
+              <div class="proj-info">
+                <h3>ColorForge</h3>
+                <p class="proj-desc">Interactive gradient generator built as a JavaScript practice project, with 3D experimentation.</p>
+                <p class="proj-k">KEY FEATURES</p>
+                <ul class="proj-feat"><li class="placeholder">[Add key features]</li></ul>
+                <p class="proj-links"><span class="ph-link">Repo</span><a href="https://salunkhesmit.github.io/colorforge/" target="_blank" rel="noopener">Live ↗</a></p>
+              </div>
+              <div class="proj-side">
+                <div class="thumb"><img src="https://picsum.photos/seed/colorforge/800/450" alt="ColorForge preview" loading="lazy"></div>
+                <p class="proj-k">STACK</p>
+                <ul class="proj-stack"><li>JavaScript</li><li>iro.js</li><li>Anime.js</li><li>Three.js</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="proj-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+            <div class="proj-body">
+              <div class="proj-info">
+                <h3>My AI Knowledge Universe</h3>
+                <p class="proj-desc">Personal directory of AI tools, websites and development resources (AI Tools Directory).</p>
+                <p class="proj-k">KEY FEATURES</p>
+                <ul class="proj-feat"><li class="placeholder">[Add key features]</li></ul>
+                <p class="proj-links"><span class="ph-link">Repo</span><a href="https://salunkhesmit.github.io/ai_tools_directory/" target="_blank" rel="noopener">Live ↗</a></p>
+              </div>
+              <div class="proj-side">
+                <div class="thumb"><img src="https://picsum.photos/seed/aiuniverse/800/450" alt="My AI Knowledge Universe preview" loading="lazy"></div>
+                <p class="proj-k">STACK</p>
+                <ul class="proj-stack"><li class="placeholder">[Add technologies]</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="proj-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+            <div class="proj-body">
+              <div class="proj-info">
+                <h3>NGO Website</h3>
+                <p class="proj-desc">Responsive NGO website project.</p>
+                <p class="proj-k">KEY FEATURES</p>
+                <ul class="proj-feat"><li class="placeholder">[Add key features]</li></ul>
+                <p class="proj-links"><span class="ph-link">Repo</span><a href="https://ngowebdemo.netlify.app/" target="_blank" rel="noopener">Live ↗</a></p>
+              </div>
+              <div class="proj-side">
+                <div class="thumb"><img src="https://picsum.photos/seed/ngosite/800/450" alt="NGO Website preview" loading="lazy"></div>
+                <p class="proj-k">STACK</p>
+                <ul class="proj-stack"><li class="placeholder">[Add technologies]</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="proj-4" role="tabpanel" aria-labelledby="tab-4" hidden>
+            <div class="proj-body">
+              <div class="proj-info">
+                <h3>AnyFit Website</h3>
+                <p class="proj-desc">Responsive fitness website.</p>
+                <p class="proj-k">KEY FEATURES</p>
+                <ul class="proj-feat"><li class="placeholder">[Add key features]</li></ul>
+                <p class="proj-links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p>
+              </div>
+              <div class="proj-side">
+                <div class="thumb"><img src="https://picsum.photos/seed/anyfit/800/450" alt="AnyFit Website preview" loading="lazy"></div>
+                <p class="proj-k">STACK</p>
+                <ul class="proj-stack"><li class="placeholder">[Add technologies]</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="proj-5" role="tabpanel" aria-labelledby="tab-5" hidden>
+            <div class="proj-body">
+              <div class="proj-info">
+                <h3>Café UI Demo</h3>
+                <p class="proj-desc">Responsive café interface.</p>
+                <p class="proj-k">KEY FEATURES</p>
+                <ul class="proj-feat"><li class="placeholder">[Add key features]</li></ul>
+                <p class="proj-links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p>
+              </div>
+              <div class="proj-side">
+                <div class="thumb"><img src="https://picsum.photos/seed/cafeui/800/450" alt="Café UI Demo preview" loading="lazy"></div>
+                <p class="proj-k">STACK</p>
+                <ul class="proj-stack"><li class="placeholder">[Add technologies]</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="proj-6" role="tabpanel" aria-labelledby="tab-6" hidden>
+            <div class="proj-body">
+              <div class="proj-info">
+                <h3>Attendance Dashboard</h3>
+                <p class="proj-desc">Student attendance and semester analytics prototype.</p>
+                <p class="proj-k">KEY FEATURES</p>
+                <ul class="proj-feat"><li class="placeholder">[Add key features]</li></ul>
+                <p class="proj-links"><span class="ph-link">Repo</span><span class="ph-link">Live</span></p>
+              </div>
+              <div class="proj-side">
+                <div class="thumb"><img src="https://picsum.photos/seed/attendance/800/450" alt="Attendance Dashboard preview" loading="lazy"></div>
+                <p class="proj-k">STACK</p>
+                <ul class="proj-stack"><li class="placeholder">[Add technologies]</li></ul>
+              </div>
+            </div>
+          </article>
+          <p class="note">Grey items are placeholders until verified details are added. See <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">GitHub</a> for repositories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6b. TERMINAL -->
+  <section id="terminal" class="block">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>05</span> Terminal</h2>
+      <p class="sec-lead">A small working terminal. Type a command or tap one below. Start with <code>help</code>.</p>
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="tm" id="tm">
+            <div class="tm-bar"><i></i><i></i><i></i><span>visitor@portfolio:~</span></div>
+            <div class="tm-out" id="tm-out" role="log" aria-live="polite"></div>
+            <form class="tm-in" id="tm-form" autocomplete="off"><label for="tm-input">visitor@portfolio:~$</label><input id="tm-input" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="type 'help'"></form>
+          </div>
+          <div class="tm-chips" id="tm-chips" aria-label="Quick commands"></div>
+        </div>
+        <div class="col-lg-5">
+          <aside class="tm-panel" aria-label="Information panel">
+            <div class="tm-ph"><span>INFO PANEL</span><span><span class="led"></span> SYS: ONLINE</span></div>
+            <div id="tm-view"></div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CONTACT -->
+  <section id="contact" class="block">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>06</span> Contact</h2>
+      <p>Open to freelance work and collaboration.</p>
+      <ul class="contact-list">
+        <li><b>GitHub</b> <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">github.com/Salunkhesmit</a></li>
+        <li><b>Email</b> <span class="ph-link">[add email]</span></li>
+        <li><b>LinkedIn</b> <span class="ph-link">[add link]</span></li>
+      </ul>
+    </div>
+  </section>
+  </main>
+
+  <!-- 8. INTERACTIVE FOOTER -->
+  <footer class="site-footer" id="footer">
+    <div class="container reveal">
+      <div class="sf-grid">
+        <div class="term">
+          <div class="term-bar"><i></i><i></i><i></i><span>session: close</span></div>
+          <div class="term-body">
+            <p>&gt; visitor session active</p>
+            <p>&gt; all sections loaded</p>
+            <p>&gt; closing session, thanks for visiting<span class="cursor">_</span></p>
+            <p class="sf-status"><span class="led"></span>Available For Freelance</p>
+          </div>
+          <nav class="keys" aria-label="Footer links">
+            <a class="key w2" href="#top">HOME</a><a class="key gh" href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">G3</a><span class="key off" aria-disabled="true">IG</span>
+            <span class="key off" aria-disabled="true">@</span><a class="key w2 hire" href="#contact">HIRE ME</a><span class="key off" aria-disabled="true">X</span>
+            <span class="key w2 off" aria-disabled="true">CALL ME</span><span class="key off" aria-disabled="true">DB</span><span class="key off" aria-disabled="true">BH</span>
+          </nav>
+        </div>
+        <div class="crt" aria-hidden="true"><i class="sweep"></i><i class="blip"></i></div>
+      </div>
+      <p class="credit">Designed &amp; Developed by Smit Salunkhe</p>
+    </div>
+  </footer>
+
+  <dialog id="info" aria-labelledby="info-title">
+    <button type="button" class="info-x" aria-label="Close">×</button>
+    <img id="info-img" alt="">
+    <div class="info-body">
+      <p id="info-sub" class="info-sub"></p>
+      <h3 id="info-title"></h3>
+      <p id="info-text"></p>
+      <a id="info-view" class="cert-view" href="#" target="_blank" rel="noopener">View document ↗</a>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
