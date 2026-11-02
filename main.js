@@ -1,4 +1,7 @@
 import "./ui.js";
+import "./terminal.js";
+import "./sections.js";
+import "./ambient.js";
 import { DigitalRain } from "./rain.js";
 const $ = (s) => document.querySelector(s);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -22,15 +25,6 @@ else {
 const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach((n) => rio.observe(n));
 
-// Lazy: holo card
-const holo = $("#holo");
-const gated = matchMedia("(max-width:768px)").matches || navigator.connection?.saveData;
-const loadHolo = async () => (await import("./holocard.js")).mountHoloCard(holo);
-if (gated) {
-  holo.innerHTML = `<div class="holo-note"><div>Heavy 3D card (13 MB)<br><button type="button">Load holographic card</button></div></div>`;
-  holo.querySelector("button").addEventListener("click", () => { holo.innerHTML = ""; loadHolo(); }, { once: true });
-} else new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); loadHolo(); } }, { rootMargin: "400px" }).observe(holo);
-
-// Mascot integration point
+// Mascot integration point: set data-model="path/to/model.glb" on #mascot to load a GLB (layout unchanged).
 const mascot = $("#mascot");
 if (mascot.dataset.model) import("./mascot.js").then((m) => m.mountMascot(mascot, mascot.dataset.model, reduce));
