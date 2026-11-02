@@ -5,7 +5,7 @@ const fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const goTo = (sel) => $(sel)?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
 
-// Scroll HUD (rAF-throttled; active section via IntersectionObserver)
+// Scroll HUD 
 const hud = Object.assign(document.createElement("div"), { id: "hud-bar", innerHTML: "<i></i>" });
 const chip = Object.assign(document.createElement("div"), { id: "hud-chip" }); chip.setAttribute("aria-hidden", "true");
 document.body.append(hud, chip);
@@ -27,20 +27,25 @@ const so = new IntersectionObserver((es) => es.forEach((e) => {
 $$("main section[id], footer[id]").forEach((s) => so.observe(s));
 paint();
 
-// Project detail modal (built from the card's existing content)
-const pd = document.createElement("dialog"); pd.id = "proj"; pd.setAttribute("aria-label", "Project details"); document.body.append(pd);
-function openProj(card) {
-  pd.innerHTML = `<button class="x" type="button" aria-label="Close">✕</button><div class="pd-body">${card.innerHTML}</div>`;
-  $(".x", pd).onclick = () => pd.close(); pd.showModal();
+// Project showcase
+const tabs = $$("#proj-tabs [role=tab]"), panels = $$("#projects .proj");
+function showProj(i, scroll) {
+  tabs.forEach((t, n) => { t.setAttribute("aria-selected", n === i); t.tabIndex = n === i ? 0 : -1; });
+  panels.forEach((p, n) => { p.hidden = n !== i; p.classList.toggle("show", n === i); });
+  $("#proj-count").textContent = `${String(i + 1).padStart(2, "0")} / ${String(panels.length).padStart(2, "0")}`;
+  if (scroll) goTo("#projects");
 }
-pd.addEventListener("click", (e) => { if (e.target === pd) pd.close(); });
-$$("#projects .card-x").forEach((c) => {
-  c.dataset.proj = ""; c.tabIndex = 0; c.setAttribute("role", "button"); c.setAttribute("aria-haspopup", "dialog");
-  c.addEventListener("click", (e) => { if (!e.target.closest("a")) openProj(c); });
-  c.addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target === c) { e.preventDefault(); openProj(c); } });
+tabs.forEach((t, i) => {
+  t.addEventListener("click", () => showProj(i));
+  t.addEventListener("keydown", (e) => {
+    const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key]; if (!d) return;
+    e.preventDefault(); const n = (i + d + tabs.length) % tabs.length; showProj(n); tabs[n].focus();
+  });
 });
+addEventListener("showproj", (e) => showProj(e.detail, true));
+showProj(0);
 
-// Command palette (Ctrl/Cmd + K)
+// Command palette (Ctrl + K)
 const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 $$(".pal-open kbd").forEach((k) => (k.textContent = mac ? "⌘K" : "Ctrl K"));
 const dlg = document.createElement("dialog"); dlg.id = "pal"; dlg.setAttribute("aria-label", "Command palette");
@@ -49,11 +54,11 @@ document.body.append(dlg);
 const input = $("input", dlg), list = $("ul", dlg), empty = $(".pal-empty", dlg);
 let sel = 0, shown = [];
 function items() {
-  const a = [["Home", "#top"], ["About", "#about"], ["Skills", "#skills"], ["Credentials", "#credentials"], ["Projects", "#projects"], ["Contact", "#contact"], ["Footer", "#footer"]].map(([t, h]) => ({ t: "Go to " + t, h, k: "Navigate" }));
+  const a = [["Home", "#top"], ["About", "#about"], ["Skills", "#skills"], ["Credentials", "#credentials"], ["Projects", "#projects"], ["Terminal", "#terminal"], ["Contact", "#contact"], ["Footer", "#footer"]].map(([t, h]) => ({ t: "Go to " + t, h, k: "Navigate" }));
   const gh = $(".btn-ghost[href^=http]"); if (gh) a.push({ t: "Open GitHub profile", h: gh.href, k: "Link", ext: 1 });
-  $$("#projects article").forEach((art) => {
+  $$("#projects .proj").forEach((art, i) => {
     const n = $("h3", art).textContent;
-    a.push({ t: n + " — details", k: "Project", run: () => openProj($(".card-x", art)) });
+    a.push({ t: n + " — details", k: "Project", run: () => showProj(i, true) });
     $$("a[href^=http]", art).forEach((l) => a.push({ t: `${n} — ${l.textContent.replace("↗", "").trim()}`, h: l.href, k: "Project", ext: 1 }));
   });
   return a;
@@ -87,12 +92,12 @@ addEventListener("keydown", (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); dlg.open ? dlg.close() : openPal(); }
 });
 
-// Cursor-reactive details (fine pointers only)
+// Cursor-reactive details
 if (fine && !reduce) {
   const crt = $(".crt"); let near = false;
   if (crt) new IntersectionObserver(([e]) => (near = e.isIntersecting)).observe(crt);
   addEventListener("pointermove", (e) => {
-    const c = e.target.closest?.(".card-x,.sys-panel");
+    const c = e.target.closest?.(".card-x,.sys-panel,.sk,.tm-panel");
     if (c) { const r = c.getBoundingClientRect(); c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px"); }
     if (near) {
       const r = crt.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
@@ -102,7 +107,7 @@ if (fine && !reduce) {
   }, { passive: true });
 }
 
-// Smooth cursor follower: eased in rAF (frame-rate independent), runs only while moving or settling.
+// Smooth cursor follower
 if (fine && !reduce) {
   const cf = Object.assign(document.createElement("div"), { id: "cf" }); cf.setAttribute("aria-hidden", "true"); document.body.append(cf);
   const HOT = "a,button,[role=button],input,label,summary,.key:not(.off),li[role=option],.card-x[data-proj]";
