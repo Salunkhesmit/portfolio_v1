@@ -1,4 +1,3 @@
-// HUD, command palette, project modal, cursor-reactive details. No dependencies.
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
