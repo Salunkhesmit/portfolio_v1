@@ -65,3 +65,18 @@ $$(".depth-wrap").forEach((wrap) => {
   new IntersectionObserver(([e]) => { inView = e.isIntersecting; play(); }).observe(wrap);
   layout();
 });
+
+// Project Screenshot Zoom / Lightbox
+const projectZoom = $("#project-zoom"), projectZoomImg = $("#project-zoom-img"), projectZoomCaption = $("#project-zoom-caption"), projectZoomClose = $(".project-zoom-close");
+
+if (projectZoom && projectZoomImg && projectZoomCaption && projectZoomClose) {
+  $$("#projects .thumb.shot").forEach((button) => button.addEventListener("click", () => {
+    const img = $("img", button); if (!img) return;
+    projectZoomImg.src = img.currentSrc || img.src; projectZoomImg.alt = img.alt || "Enlarged project screenshot";
+    projectZoomCaption.textContent = img.alt || ""; projectZoom.showModal();
+  }));
+
+  projectZoomClose.addEventListener("click", () => projectZoom.close());
+  projectZoom.addEventListener("click", (e) => { if (e.target === projectZoom) projectZoom.close(); });
+  projectZoom.addEventListener("close", () => { projectZoomImg.src = ""; projectZoomCaption.textContent = ""; });
+}
