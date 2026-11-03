@@ -251,6 +251,16 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
 #zoom img{display:block;max-width:100%;max-height:90vh;margin:auto;border:1px solid var(--line);border-radius:.5rem;background:#17171a;cursor:zoom-out}
 @media (max-width:767px){.proj{min-height:0}.proj-side{order:-1}}
 
+/* Project Screenshot Zoom / Lightbox */
+.project-zoom{width:min(94vw,1400px);max-width:none;max-height:92vh;padding:0;border:1px solid rgba(229,35,50,.45);border-radius:12px;background:#08090d;color:var(--ink);overflow:hidden}
+.project-zoom::backdrop{background:rgba(0,0,0,.88);backdrop-filter:blur(8px)}
+.project-zoom-inner{position:relative;display:flex;flex-direction:column;align-items:center;padding:1rem;gap:.75rem}
+.project-zoom img{display:block;max-width:100%;max-height:calc(92vh - 80px);width:auto;height:auto;object-fit:contain;border-radius:6px}
+.project-zoom-close{position:absolute;top:.5rem;right:.5rem;z-index:2;width:38px;height:38px;border:1px solid rgba(229,35,50,.6);border-radius:50%;background:rgba(8,9,13,.9);color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s,transform .2s}
+.project-zoom-close:hover{background:rgba(229,35,50,.8);transform:scale(1.05)}
+.project-zoom-caption{margin:0;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:600px){.project-zoom{width:96vw;max-height:95vh;border-radius:8px}.project-zoom-inner{padding:.5rem}.project-zoom img{max-height:calc(95vh - 60px)}}
+
 /* Interactive terminal */
 .tm{border:1px solid var(--line);background:#19191c;border-radius:.6rem;overflow:hidden;font:13px/1.7 var(--mono)}
 .tm-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem 1rem;background:#212125;border-bottom:1px solid var(--line);color:var(--dim);font-size:11px}
