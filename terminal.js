@@ -1,3 +1,5 @@
+import { getGithubData, safeUrl, timeAgo } from "./github.js";
+import { useResume } from "./resume.js";
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -36,8 +38,26 @@ if (root) {
     skills: () => { const d = data(); setView("Skills", CATS.map((k) => `<p>${esc(d.cats[k].title)}</p>${d.cats[k].items.length ? badges(d.cats[k].items) : ""}`).join("")); return ["Categories: " + CATS.map((k) => d.cats[k].title).join(", "), "Type a category command (e.g. frontend) for details."]; },
     projects: () => { const d = data(); setView("Projects", rows(d.projects.map((p, i) => `<li><button type="button" data-proj="${i}">${esc(p.name)}<small>${esc(p.desc)}</small></button></li>`)), "Select one to open it."); return d.projects.map((p, i) => `${String(i + 1).padStart(2, "0")}  ${p.name}`); },
     clear: () => { out.innerHTML = ""; return null; },
+    github: async () => {
+      const g = await getGithubData();
+      if (!g) { setView("GitHub", "", "Couldn't reach GitHub right now."); return ["GitHub data is unavailable right now. Try again later."]; }
+      const s = g.stats || {}, u = g.user;
+      const lines = [`@${u.login} · ${u.publicRepos} public repos · ${u.followers} followers`];
+      if (s.contributionsLastYear != null) lines.push(`${s.contributionsLastYear} contributions in the last 12 months · streak ${s.currentStreak}d (best ${s.longestStreak}d)`);
+      if (g.languages?.length) lines.push("Top languages: " + g.languages.slice(0, 3).map((l) => `${l.name} ${l.percent}%`).join(", "));
+      lines.push("Type 'repos' for recent repositories.");
+      setView("GitHub", rows(lines.slice(0, -1).map((l) => `<li>${esc(l)}</li>`)) + `<p><a href="#github">Open the full activity section ↓</a></p>`, "@" + u.login);
+      return lines;
+    },
+    resume: () => (useResume("view") ? ["Opening resume in a new tab…"] : ["Resume isn't uploaded yet. Check back soon."]),
+    repos: async () => {
+      const g = await getGithubData();
+      if (!g?.repos?.length) { setView("Repositories", "", "Nothing to show right now."); return ["No repository data available right now."]; }
+      setView("Repositories", rows(g.repos.map((r) => `<li><a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener">${esc(r.name)}<small>${esc(r.description || "No description yet.")}</small></a></li>`)), "Opens on GitHub.");
+      return g.repos.map((r) => `${r.name.padEnd(18)} ${r.language || "-"}  · updated ${timeAgo(r.pushedAt)}`);
+    },
   };
-  const DESC = { help: "list commands", about: "about the developer", skills: "skill categories", frontend: "frontend stack", backend: "backend stack", languages: "programming languages", databases: "databases", ai: "AI & data libraries", tools: "tools & platforms", projects: "list projects", clear: "clear the terminal" };
+  const DESC = { help: "list commands", about: "about the developer", skills: "skill categories", frontend: "frontend stack", backend: "backend stack", languages: "programming languages", databases: "databases", ai: "AI & data libraries", tools: "tools & platforms", projects: "list projects", github: "live GitHub stats", repos: "recent repositories", resume: "open my resume", clear: "clear the terminal" };
   CATS.forEach((k) => (CMDS[k] = () => { const r = cat(k); r.view(); return r.lines; }));
 
   async function run(raw) {
@@ -45,7 +65,7 @@ if (root) {
     busy = true; skip = false; hist.push(raw); hi = hist.length;
     const echo = document.createElement("div"); echo.className = "ln cmd"; echo.innerHTML = `<b>$</b> ${esc(raw)}`; out.appendChild(echo);
     const fn = CMDS[cmd];
-    if (fn) { const lines = fn(); if (lines) await print(lines); }
+    if (fn) { const lines = await fn(); if (lines) await print(lines); }
     else await print([`command not found: ${raw}. Type 'help' for the list.`], "dim");
     out.scrollTop = out.scrollHeight; busy = false;
   }
