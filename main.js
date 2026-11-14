@@ -1,6 +1,7 @@
 import "./ui.js";
 import "./terminal.js";
 import "./sections.js";
+import "./github.js";
 import "./ambient.js";
 import { DigitalRain } from "./rain.js";
 const $ = (s) => document.querySelector(s);
