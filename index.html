@@ -12,6 +12,7 @@
 </script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="main.css" rel="stylesheet">
+<link href="github.css" rel="stylesheet">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
 </head>
 <body class="locked" id="top">
@@ -27,10 +28,10 @@
     </div>
   </div>
 
-  <nav class="navbar navbar-expand-md fixed-top site-nav">
+  <nav class="navbar navbar-expand-xl fixed-top site-nav">
     <div class="container">
       <a class="navbar-brand" href="#top">Smit Salunkhe</a>
-      <button class="pal-open pal-btn ms-auto me-2 d-md-none" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button>
+      <button class="pal-open pal-btn ms-auto me-2 d-xl-none" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto">
@@ -38,9 +39,10 @@
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#credentials">Credentials</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#github">GitHub</a></li>
           <li class="nav-item"><a class="nav-link" href="#terminal">Terminal</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item ms-md-2"><button class="pal-open pal-btn" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button></li>
+          <li class="nav-item ms-xl-2"><button class="pal-open pal-btn" type="button" aria-label="Open command palette"><kbd>Ctrl K</kbd></button></li>
         </ul>
       </div>
     </div>
@@ -59,6 +61,11 @@
           <div class="d-flex flex-wrap gap-3 mt-4">
             <a class="btn btn-ember" href="#projects">View projects</a>
             <a class="btn btn-ghost" href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">GitHub</a>
+            <!-- Resume controls: the file path is set in config.js (RESUME.path) -->
+            <div class="btn-group-joined" role="group" aria-label="Resume">
+              <a class="btn btn-ghost" href="#" data-resume="view">View Resume</a>
+              <a class="btn btn-ghost" href="#" data-resume="download" aria-label="Download CV">↓ Download CV</a>
+            </div>
           </div>
         </div>
         <div class="col-lg-5 reveal">
@@ -97,7 +104,7 @@
       </div>
       <ol class="timeline" aria-label="Developer journey">
         <li><time>2024 - 2027 (3 Years)</time><h4>Computer Engineering Diploma</h4><p>Vivekanand Education Society's Polytechnic</p></li>
-        <li><time></time><h4>Project development</h4><p>AnyFit Website, Attendance Dashboard, AI Tools Directory,  &amp; etc</p></li>
+        <li><time>Ongoing</time><h4>Project development</h4><p>AnyFit Website, Attendance Dashboard, AI Tools Directory and more</p></li>
         <li><time>June 2026 - August 2026</time><h4>Internship</h4><p>Claps and Whistles — Web Development Intern</p></li>
       </ol>
     </div>
@@ -118,7 +125,7 @@
           <li tabindex="0" data-icon="An" data-tip="Anime.js&#10;Lightweight JavaScript animation library.">Anime.js</li>
           <li tabindex="0" data-icon="iro" data-tip="iro.js&#10;Colour picker library for JavaScript.">iro.js</li>
         </ul></div>
-        <div class="sk" data-cat="backend"><h3>Backend Development</h3><ul><li class="placeholder" data-icon="+" data-tip="Add backend technologies">[Add backend technologies]</li></ul></div>
+        <div class="sk" data-cat="backend"><h3>Backend Development</h3><p class="sk-note">Growing toward full stack. Backend skills will be listed here as I build with them.</p><ul></ul></div>
         <div class="sk" data-cat="languages"><h3>Programming Languages</h3><ul>
           <li class="logo" tabindex="0" data-icon="Py" data-tip="Python&#10;General-purpose programming language."><img src="https://cdn.simpleicons.org/python/5A9FD4" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">Python</li>
           <li class="logo" tabindex="0" data-icon="C" data-tip="C&#10;Low-level, general-purpose programming language."><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="" loading="lazy" onerror="this.parentNode.classList.remove('logo');this.remove()">C</li>
@@ -175,7 +182,7 @@
       <div class="depth-wrap" data-autoplay="5000">
         <button type="button" class="dc-btn dc-prev" aria-label="Previous internship">‹</button>
         <div class="depth" tabindex="0" aria-roledescription="carousel" aria-label="Internships">
-          <article class="cert" data-title="Internship Letter" data-sub="Claps and Whistles · Web Development Internship · June–August 2026" data-info="Completed a web development internship involving product verification, content updates, SEO-related tasks, and website maintenance for Bombay100YearsAgo; product and client image management for Adornis; HR portal form development using HTML, CSS, JavaScript, and Bootstrap for Strizelo; and frontend UI development for Respire Fitness." data-link="assets/certificates&internship/internship_letter.pdf" data-cta="View letter"><div class="cert-img">
+          <article class="cert" data-title="Internship Letter" data-sub="Claps and Whistles · Web Development Internship · June–August 2026" data-info="Completed a web development internship involving product verification, content updates, SEO-related tasks, and website maintenance for Bombay100YearsAgo; product and client image management for Adornis; HR portal form development using HTML, CSS, JavaScript, and Bootstrap for Strizelo; and frontend UI development for Respire Fitness." data-link="internship_letter.pdf" data-cta="View letter"><div class="cert-img">
           <img src="internship_letter.jpg" alt="Internship Letter" loading="lazy" draggable="false"><span class="cert-name">Internship Letter</span></div></article>
         </div>
         <button type="button" class="dc-btn dc-next" aria-label="Next internship">›</button>
@@ -191,7 +198,7 @@
       <p class="sec-lead">Selected projects, listed A&ndash;Z. Choose one to see its details.</p>
       <div class="proj-wrap">
         <div id="proj-tabs" role="tablist" aria-label="Projects" aria-orientation="vertical">
-          <button type="button" role="tab" id="tab-5" aria-controls="proj-5" aria-selected="false"><span>01</span>AI Tools Directoy</button>
+          <button type="button" role="tab" id="tab-5" aria-controls="proj-5" aria-selected="false"><span>01</span>AI Tools Directory</button>
           <button type="button" role="tab" id="tab-0" aria-controls="proj-0" aria-selected="false"><span>02</span>AnyFit Website</button>
           <button type="button" role="tab" id="tab-1" aria-controls="proj-1" aria-selected="false"><span>03</span>Attendance Dashboard</button>
           <button type="button" role="tab" id="tab-2" aria-controls="proj-2" aria-selected="false"><span>04</span>Café UI Demo</button>
@@ -204,14 +211,14 @@
           <article class="proj" id="proj-5" role="tabpanel" aria-labelledby="tab-5" hidden>
             <div class="proj-body">
               <div class="proj-info">
-                <h3>AI Tools Directoy</h3>
+                <h3>AI Tools Directory</h3>
                 <p class="proj-desc">A personal directory of AI tools, websites, UI resources, code libraries and learning platforms, explored through an interactive 3D globe.</p>
                 <p class="proj-k">KEY FEATURES</p>
                 <ul class="proj-feat"><li>Interactive, rotating 3D globe</li><li>7 organised categories</li><li>Search and category filters</li><li>Entries with descriptions, pricing, access type, tags and verification status</li><li>Direct links to official websites</li><li>Responsive on desktop, tablet and mobile</li></ul>
                 <p class="proj-links"><a class="live" href="https://salunkhesmit.github.io/ai_tools_directory/" target="_blank" rel="noopener">Live Demo ↗</a></p>
               </div>
               <div class="proj-side">
-                <button type="button" class="thumb shot" aria-label="Enlarge My AI Knowledge Universe preview"><img src="ai_tools_directory.png" alt="Screenshot of My AI Knowledge Universe" loading="lazy" decoding="async"></button>
+                <button type="button" class="thumb shot" aria-label="Enlarge AI Tools Directory preview"><img src="ai_tools_directory.png" alt="Screenshot of the AI Tools Directory" loading="lazy" decoding="async"></button>
                 <p class="proj-k">STACK</p>
                 <ul class="proj-stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li><li>Bootstrap</li></ul>
               </div>
@@ -330,10 +337,19 @@
     </div>
   </section>
 
-  <!-- 6b. TERMINAL -->
+  <!-- 6. GITHUB ACTIVITY (data: github.json, written by .github/workflows/github-activity.yml) -->
+  <section id="github" class="block" data-user="Salunkhesmit">
+    <div class="container reveal">
+      <h2 class="sec-title"><span>06</span> GitHub Activity</h2>
+      <p class="sec-lead">My public contribution history, repositories and recent activity, pulled from GitHub. <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">github.com/Salunkhesmit ↗</a></p>
+      <div id="gh-root" aria-busy="true"><p class="gh-state">&gt; fetching activity<span class="cursor">_</span></p></div>
+    </div>
+  </section>
+
+  <!-- 7. TERMINAL -->
   <section id="terminal" class="block">
     <div class="container reveal">
-      <h2 class="sec-title"><span>06</span> Terminal</h2>
+      <h2 class="sec-title"><span>07</span> Terminal</h2>
       <p class="sec-lead">A small working terminal. Type a command or tap one below. Start with <code>help</code>.</p>
       <div class="row g-4">
         <div class="col-lg-7">
@@ -354,10 +370,10 @@
     </div>
   </section>
 
-  <!-- 7. CONTACT -->
+  <!-- 8. CONTACT -->
   <section id="contact" class="block">
     <div class="container reveal">
-      <h2 class="sec-title"><span>07</span> Contact</h2>
+      <h2 class="sec-title"><span>08</span> Contact</h2>
       <p>Open to freelance work and collaboration.</p>
       <ul class="contact-list">
         <li><b>GitHub</b> <a href="https://github.com/Salunkhesmit" target="_blank" rel="noopener">github.com/Salunkhesmit</a></li>
