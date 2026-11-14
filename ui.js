@@ -1,3 +1,4 @@
+import { useResume } from "./resume.js";
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
@@ -53,8 +54,9 @@ document.body.append(dlg);
 const input = $("input", dlg), list = $("ul", dlg), empty = $(".pal-empty", dlg);
 let sel = 0, shown = [];
 function items() {
-  const a = [["Home", "#top"], ["About", "#about"], ["Skills", "#skills"], ["Credentials", "#credentials"], ["Projects", "#projects"], ["Terminal", "#terminal"], ["Contact", "#contact"], ["Footer", "#footer"]].map(([t, h]) => ({ t: "Go to " + t, h, k: "Navigate" }));
+  const a = [["Home", "#top"], ["About", "#about"], ["Skills", "#skills"], ["Credentials", "#credentials"], ["Internships", "#internships"], ["Projects", "#projects"], ["GitHub Activity", "#github"], ["Terminal", "#terminal"], ["Contact", "#contact"], ["Footer", "#footer"]].map(([t, h]) => ({ t: "Go to " + t, h, k: "Navigate" }));
   const gh = $(".btn-ghost[href^=http]"); if (gh) a.push({ t: "Open GitHub profile", h: gh.href, k: "Link", ext: 1 });
+  a.push({ t: "View Resume (CV)", k: "Resume", run: () => useResume("view") }, { t: "Download Resume (CV)", k: "Resume", run: () => useResume("download") });
   $$("#projects .proj").forEach((art, i) => {
     const n = $("h3", art).textContent;
     a.push({ t: n + " — details", k: "Project", run: () => showProj(i, true) });
@@ -96,7 +98,7 @@ if (fine && !reduce) {
   const crt = $(".crt"); let near = false;
   if (crt) new IntersectionObserver(([e]) => (near = e.isIntersecting)).observe(crt);
   addEventListener("pointermove", (e) => {
-    const c = e.target.closest?.(".card-x,.sys-panel,.sk,.tm-panel");
+    const c = e.target.closest?.(".gh-card,.sys-panel,.sk,.tm-panel");
     if (c) { const r = c.getBoundingClientRect(); c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px"); }
     if (near) {
       const r = crt.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
@@ -109,7 +111,7 @@ if (fine && !reduce) {
 // Smooth cursor follower
 if (fine && !reduce) {
   const cf = Object.assign(document.createElement("div"), { id: "cf" }); cf.setAttribute("aria-hidden", "true"); document.body.append(cf);
-  const HOT = "a,button,[role=button],input,label,summary,.key:not(.off),li[role=option],.card-x[data-proj]";
+  const HOT = "a,button,[role=button],input,label,summary,.key:not(.off),li[role=option]";
   let tx = 0, ty = 0, x = 0, y = 0, s = 1, ts = 1, raf = 0, t0 = 0, seen = false;
   const tick = (t) => {
     const k = 1 - Math.exp(-((t - t0) / 1000) * 14); t0 = t;
