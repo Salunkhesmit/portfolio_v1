@@ -46,7 +46,7 @@ $$(".depth-wrap").forEach((wrap) => {
   prev.onclick = () => go(i - 1); next.onclick = () => go(i + 1);
   cards.forEach((c, k) => c.addEventListener("click", () => {
     if (swiped) return;
-    k !== i ? go(k) : openInfo(c);          // side card -> bring to front; front card -> open details
+    k !== i ? go(k) : openInfo(c);
   }));
   stage.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") { e.preventDefault(); go(i - 1); }
