@@ -1,0 +1,123 @@
+#gh-root{display:grid;gap:1.2rem}
+.gh-state,.gh-empty{margin:0;font:13px/1.8 var(--mono);color:var(--dim)}
+
+/* Shared card look */
+.gh-card{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(180deg,#242428,#1d1d21);transition:border-color .25s,transform .25s}
+.gh-card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,0),rgba(229,35,50,.1),transparent 70%)}
+.gh-card:hover::before{opacity:1}
+.gh-card>*{position:relative}
+.gh-title,.gh-subtitle{margin:0;font:10px var(--mono);letter-spacing:.3em;color:var(--dim)}
+.gh-subtitle{margin-bottom:.8rem}
+
+/* Header line */
+.gh-head{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;font:11px var(--mono);letter-spacing:.2em;color:var(--dim)}
+.gh-user{color:#fff}
+.gh-user .led{margin-right:.4rem}
+.gh-sync{flex:1}
+.gh-profile{color:#fff;border-bottom:1px solid var(--ember);letter-spacing:.1em}
+.gh-profile:hover{color:var(--ember)}
+
+/* Stat tiles */
+.gh-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.8rem}
+.gh-stat{display:flex;flex-direction:column;gap:.15rem;padding:1rem 1.1rem}
+.gh-stat:hover{border-color:rgba(229,35,50,.5);transform:translateY(-2px)}
+.gh-num{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.gh-label{margin-top:.3rem;font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.gh-sub-label{font:11px var(--mono);color:var(--dim)}
+
+/* Contribution graph */
+.gh-graph-card{padding:1.2rem 1.3rem}
+.gh-graph-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.4rem 1rem;margin-bottom:1rem}
+.gh-total{margin:0;font:12px var(--mono);color:var(--dim)}.gh-total b{color:#fff;font-size:1.1rem}
+.gh-scroll{overflow-x:auto;padding-bottom:.4rem;scrollbar-width:thin;scrollbar-color:#3a3a40 transparent}
+.gh-graph{display:block;width:100%;height:auto}
+.gh-axis{fill:var(--dim);font:9px var(--mono)}
+.l0{--c:rgba(255,255,255,.06)}.l1{--c:rgba(229,35,50,.3)}.l2{--c:rgba(229,35,50,.55)}.l3{--c:rgba(229,35,50,.8)}.l4{--c:#ff3b4a}
+rect.gh-cell{fill:var(--c);transform-box:fill-box;transform-origin:center;transition:stroke .15s}
+rect.gh-cell:hover{stroke:#fff;stroke-width:1}
+rect.gh-cell.l4{filter:drop-shadow(0 0 3px rgba(229,35,50,.7))}
+.gh-graph:not(.in) .gh-cell{opacity:0}
+.gh-graph.in .gh-cell{animation:ghCell .5s ease backwards;animation-delay:calc(var(--w) * 14ms)}
+@keyframes ghCell{from{opacity:0;transform:scale(.3)}}
+.gh-graph-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.6rem 1rem;margin-top:.8rem}
+.gh-readout{margin:0;min-height:1.5em;font:12px var(--mono);color:var(--ink)}
+.gh-legend{display:flex;align-items:center;gap:.3rem;font:11px var(--mono);color:var(--dim)}
+i.gh-cell{display:inline-block;width:11px;height:11px;border-radius:2px;background:var(--c)}
+
+/* Languages */
+.gh-lang{padding:1.1rem 1.3rem}
+.gh-lang-bar{display:flex;gap:2px;height:8px;margin:.9rem 0 .8rem;border-radius:99px;overflow:hidden}
+.gh-lang-bar i{display:block;min-width:3px}
+.gh-lang-legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;list-style:none;margin:0;padding:0;font:12px var(--mono);color:var(--ink)}
+.gh-lang-legend li{display:flex;align-items:center;gap:.4rem}
+.gh-lang-legend i,.gh-dot{display:inline-block;width:9px;height:9px;border-radius:50%}
+.gh-lang-legend span{color:var(--dim)}
+
+/* Repositories + activity */
+.gh-cols{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.5rem;align-items:start}
+.gh-repos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.gh-repo{display:flex;flex-direction:column;gap:.5rem;padding:1rem 1.1rem;color:var(--ink)}
+.gh-repo:hover{border-color:rgba(229,35,50,.5);transform:translateY(-3px);box-shadow:0 14px 30px -14px #000;color:var(--ink)}
+.gh-repo-name{font:600 14px var(--mono);color:#fff;overflow-wrap:anywhere}
+.gh-repo-name em{font-style:normal;color:var(--dim);transition:color .2s}
+.gh-repo:hover .gh-repo-name em{color:var(--ember)}
+.gh-repo-desc{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.88rem;line-height:1.5;color:var(--dim);min-height:3em}
+.gh-meta{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-top:auto;font:11px var(--mono);color:var(--dim)}
+.gh-meta-item{display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap}
+.gh-box{padding:1rem 1.1rem}
+
+/* Contribution activity over time */
+.gh-insights{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:1.4rem 2.2rem;margin-top:1.2rem;padding-top:1.1rem;border-top:1px dashed var(--line)}
+.gh-months{display:flex;align-items:stretch;gap:6px;height:104px;margin-top:.9rem}
+.gh-month{flex:1;min-width:0;display:grid;grid-template-rows:1fr auto;gap:.4rem;cursor:default}
+.gh-month i{display:block;height:100%;border-radius:2px 2px 0 0;background:linear-gradient(180deg,#ff3b4a,rgba(229,35,50,.3));transform:scaleY(var(--s));transform-origin:bottom;opacity:.75;transition:opacity .2s}
+.gh-month:last-child i{opacity:1}
+.gh-month:hover i{opacity:1}
+.gh-month span{font:9px var(--mono);color:var(--dim);text-align:center}
+.gh-insights:not(.in) .gh-month i{transform:scaleY(0)}
+.gh-insights.in .gh-month i{animation:ghBar .8s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i) * 50ms)}
+@keyframes ghBar{from{transform:scaleY(0)}}
+.gh-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.2rem;align-content:center;margin:0}
+.gh-facts dt{font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.gh-facts dd{margin:.2rem 0 0;font-size:1.2rem;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.gh-facts small{font-size:.75rem;font-weight:400;color:var(--dim)}
+
+/* Latest activity feed */
+.gh-feed{font:12.5px/1.6 var(--mono)}
+.gh-log{list-style:none;margin:0;padding:.5rem 1.1rem .8rem}
+.gh-ev{display:grid;grid-template-columns:1.8rem minmax(0,1fr) auto;gap:.2rem .8rem;padding:.75rem 0}
+.gh-ev+.gh-ev{border-top:1px dashed var(--line)}
+.gh-ev-ico{display:grid;place-items:center;width:1.7rem;height:1.7rem;border:1px solid var(--line);border-radius:50%;background:#19191c;font:12px var(--mono);color:var(--dim)}
+.gh-ev--push .gh-ev-ico,.gh-ev--pr .gh-ev-ico,.gh-ev--release .gh-ev-ico{color:var(--ember);border-color:rgba(229,35,50,.5)}
+.gh-ev-line{margin:0;color:var(--dim);overflow-wrap:anywhere}
+.gh-ev-repo{color:#fff;font-weight:600;border-bottom:1px solid rgba(229,35,50,.6)}
+.gh-ev-act{color:#d4d4d8}
+.gh-ev-act:hover,.gh-ev-repo:hover{color:var(--ember)}
+.gh-ev-detail{margin:.2rem 0 0;font-size:12px;color:var(--dim);overflow-wrap:anywhere}
+.gh-ev-detail::before{content:"› ";color:var(--ember)}
+.gh-ev time{font-size:11px;color:var(--dim);white-space:nowrap}
+.gh-feed .gh-empty{padding:1rem 1.1rem}
+.gh-feed-foot{margin:0;padding:.7rem 1.1rem;border-top:1px solid var(--line);font-size:11px;letter-spacing:.1em;text-align:right}
+.gh-feed-foot a,.gh-empty a,.gh-state a{color:#fff;border-bottom:1px solid var(--ember)}
+.gh-feed-foot a:hover,.gh-empty a:hover,.gh-state a:hover{color:var(--ember)}
+
+/* Terminal info panel */
+.tm-rows a{display:block;color:var(--ink)}.tm-rows a:hover,.tm-rows a:focus-visible{color:var(--ember)}
+
+@media (max-width:1199px){.gh-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:991px){.gh-cols,.gh-insights{grid-template-columns:1fr}}
+@media (max-width:575px){
+  .gh-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gh-repos{grid-template-columns:1fr}
+  .gh-sync{flex-basis:100%;order:3}
+  .gh-ev{grid-template-columns:1.8rem minmax(0,1fr)}
+  .gh-ev time{grid-column:2}
+  .gh-months{gap:4px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .gh-graph:not(.in) .gh-cell{opacity:1}
+  .gh-graph.in .gh-cell,.gh-insights.in .gh-month i{animation:none}
+  .gh-insights:not(.in) .gh-month i{transform:scaleY(var(--s))}
+  .gh-card,.gh-stat,.gh-repo{transition:none}
+}
