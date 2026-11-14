@@ -1,0 +1,58 @@
+name: Update GitHub activity
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/github-activity.yml"
+      - "scripts/fetch-github-activity.mjs"
+      - "assets/js/github-core.js"
+      - "assets/js/package.json"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: github-activity
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch activity
+        run: node scripts/fetch-github-activity.mjs "${{ github.repository_owner }}"
+        env:
+          GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit changes
+        id: commit
+        run: |
+          if git diff --quiet -- assets/data/github.json && [ -z "$(git ls-files --others --exclude-standard assets/data/github.json)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "github.json is up to date."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/data/github.json
+            git commit -m "chore: sync GitHub activity data"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Rebuild GitHub Pages
+        if: steps.commit.outputs.changed == 'true'
+        run: gh api --method POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request skipped."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
